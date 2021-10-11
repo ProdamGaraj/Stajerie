@@ -29,6 +29,5 @@ namespace FuckYou
             this.InitializeComponent();
         }
 
-        
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,10 +30,6 @@ namespace FuckYou
             this.InitializeComponent();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void TabView_AddTabButtonClick(muxc.TabView sender, object args)
         {
             var newTab = new muxc.TabViewItem();
@@ -53,6 +50,58 @@ namespace FuckYou
         {
             sender.TabItems.Remove(args.Tab);
             i -= 1;
+        }
+
+        private void OnAnnulerButtonClick(object sender, TappedRoutedEventArgs e)
+        {
+            if (RechercherTab.Visibility == Visibility.Visible)
+            {
+                RechercherTab.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                RechercherTab.Visibility = Visibility.Visible;
+            }
+        }
+        //Colorising tabs
+        private void RechercherTabLostFocus(object sender, RoutedEventArgs e)
+        {
+            RechercherRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
+        }
+
+        private void RechercherTabGotFocus(object sender, RoutedEventArgs e)
+        {
+            RechercherRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
+        }
+
+        private void AssureTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
+        }
+
+        private void AssureTab_LostFocus(object sender, RoutedEventArgs e)
+        {
+            AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
+        }
+
+        private void PatientTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
+        }
+
+        private void PatientTab_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
+        }
+
+        private void PrescripteurTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PrescripteurRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
+        }
+
+        private void PrescripteurTab_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PrescripteurRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
     }
 }
