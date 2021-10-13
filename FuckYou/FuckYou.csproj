@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Patient.cs" />
+    <Compile Include="Prescripteur.cs" />
     <Compile Include="ProductGridView.xaml.cs">
       <DependentUpon>ProductGridView.xaml</DependentUpon>
     </Compile>
