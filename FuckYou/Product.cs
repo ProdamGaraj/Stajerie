@@ -4,25 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuckYou
+namespace Stagerie
 {
     public partial class Product
     {
         public string No { get; set; }
+
         public string ProductName { get; set; }
-        public string Liste { get; set; }
-        public string Stock { get; set; }
-        public string Cmd { get; set; }
-        public string CodeActe { get; set; }
-        public string TVA { get; set; }
-        public string Base { get; set; }
-        public string PrixTTC { get; set; }
-        public string Remise { get; set; }
-        public string Qte { get; set; }
-        public string Montant { get; set; }
+
+        public string Liste { get; set; }//rand{1,2,3}
+
+        public string Stock { get; set; }//rand +\-
+
+        public string Cmd { get; set; }//rand +
+
+        public string CodeActe { get; set; }//rand abc
+
+        public string TVA { get; set; }//rand
+
+        public string Base { get; set; }//rand <= prixttc
+
+        public string PrixTTC { get; set; }//>0
+
+        public string Remise { get; set; }//>=0
+
+        public string Qte { get; set; }//!=0
+
+        public string Montant { get; set; }//prixttc*Remise*qte
 
         public Product(){
 
+        }
+
+        public Product(string no, string productName, string liste, string stock, string cmd, string codeActe, string tVA, string @base, string prixTTC, string remise, string qte, string montant)
+        {
+            No = no;
+            ProductName = productName;
+            Liste = liste;
+            Stock = stock;
+            Cmd = cmd;
+            CodeActe = codeActe;
+            TVA = tVA;
+            Base = @base;
+            PrixTTC = prixTTC;
+            Remise = remise;
+            Qte = qte;
+            Montant = montant;
         }
     }
 }

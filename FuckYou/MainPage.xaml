@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="FuckYou.MainPage"
+    x:Class="Stagerie.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FuckYou"
+    xmlns:local="using:Stagerie"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -60,7 +60,7 @@
                         <TextBlock x:Name="AssureVisitDate" HorizontalAlignment="Left" Margin="116,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="01/01/2021"/>
                         <StackPanel/>
                     </Grid>
-                    <Grid x:Name="RechercherTab" GotFocus="RechercherTabGotFocus" LostFocus="RechercherTabLostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="7,0,0,0" Grid.Row="1" AutomationProperties.Name="RechercherTab" Background="#FFC5C4C4" d:IsHidden="True">
+                    <Grid x:Name="RechercherTab" GotFocus="RechercherTabGotFocus" LostFocus="RechercherTabLostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="7,0,0,0" Grid.Row="1" AutomationProperties.Name="RechercherTab" Background="#FFC5C4C4">
                         <Rectangle x:Name="RechercherRect" HorizontalAlignment="Left" Height="418" Stroke="Black" VerticalAlignment="Center" Width="604" RadiusX="10" RadiusY="10" Fill="#FFC9C8C8" AutomationProperties.AccessibilityView="Content" Visibility="Visible" AutomationProperties.Name="CodePostal"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,22,0,0" Text="Rechercher" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="551" Foreground="#FF652BB9" FontSize="25"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,70,0,0" Text="Nom Prenom" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -125,7 +125,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="24,338,0,0" Text="Date/orig ord" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <ComboBox IsEditable="true" x:Name="PrescripteurDateOrig" Margin="146,334,0,0" Width="319" Height="35" Grid.ColumnSpan="2"/>
                         <ComboBox IsEditable="true" x:Name="PrescripteurDateOrigOrd" Margin="81,333,0,0" Width="104" Height="35" Grid.Column="1"/>
-                        <ComboBox IsEditable="true"  x:Name="PrescripteurDateFac" Margin="146,375,0,0" Width="428" Height="28" Grid.ColumnSpan="2"/>
+                        <ComboBox IsEditable="true"  x:Name="PrescripteurDateFac" Margin="146,375,0,0" Width="428" Height="31" Grid.ColumnSpan="2"/>
                         <TextBlock HorizontalAlignment="Left" Margin="24,231,0,0" Text="Spec" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     </Grid>
                 </Grid>

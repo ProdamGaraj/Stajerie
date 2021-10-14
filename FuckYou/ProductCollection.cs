@@ -5,26 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
-namespace FuckYou
+namespace Stagerie
 {
-    public class ProductCollection:ObservableCollection<Product>
+    public class ProductCollection : ObservableCollection<Product>
     {
         public ProductCollection()
         {
-            this.Add(new Product {
-                No="0",
-                ProductName="",
-                Liste="",
-                Stock="",
-                Cmd="",
-                CodeActe="",
-                TVA="",
-                Base="",
-                PrixTTC="",
-                Remise="",
-                Qte="",
-                Montant=""
-            });
+
+        }
+        public void AddItem(string no, string productName, string liste, string stock, string cmd, string codeActe, string tVA, string bbase, string prixTTC, string remise, string qte, string montant)
+        {
+            this.Add(new Product(no, productName, liste, stock, cmd, codeActe, tVA, bbase, prixTTC, remise, qte, montant));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FuckYou
+namespace Stagerie
 {
     class Prescripteur
     {
@@ -22,11 +22,23 @@ namespace FuckYou
 
         public string Spec { get; set; }
 
-
+        public DateTime? ModifiedAt { get; set; }
 
         public Prescripteur()
         {
 
+        }
+
+        public Prescripteur(string name, string lastName, string hospital, string rPPS, int id, int finess, string spec, DateTime? modifiedAt)
+        {
+            Name = name;
+            LastName = lastName;
+            Hospital = hospital;
+            RPPS = rPPS;
+            Id = id;
+            Finess = finess;
+            Spec = spec;
+            ModifiedAt = modifiedAt;
         }
     }
 }
