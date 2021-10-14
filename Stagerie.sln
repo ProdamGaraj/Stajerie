@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagerie", "FuckYou\Stagerie.csproj", "{FA37A495-2EC2-4CDF-9EC8-CE47EC08C561}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagerie", "Stagerie\Stagerie.csproj", "{FA37A495-2EC2-4CDF-9EC8-CE47EC08C561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

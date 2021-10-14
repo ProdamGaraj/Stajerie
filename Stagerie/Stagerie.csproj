@@ -7,8 +7,8 @@
     <ProjectGuid>{FA37A495-2EC2-4CDF-9EC8-CE47EC08C561}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FuckYou</RootNamespace>
-    <AssemblyName>FuckYou</AssemblyName>
+    <RootNamespace>Stagerie</RootNamespace>
+    <AssemblyName>Stagerie</AssemblyName>
     <DefaultLanguage>ru-RU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
