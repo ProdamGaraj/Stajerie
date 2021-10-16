@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stagerie
 {
-    public partial class Product
+    public class Product:Entity
     {
         public string No { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stagerie
 {
-    class PrescripteurJSONParser
+    public class Entity
     {
     }
 }

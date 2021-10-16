@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,11 +20,69 @@ using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace Stagerie
 {
+
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string patientJsonPath = @"C:\data\Patients.json";
+        string productJsonPath = @"C?\data\Products.json";
+        string ReadJson(string path)
+        {
+            string json = null;
+            using (StreamReader r = new StreamReader(path))
+            {
+                json = r.ReadToEnd();
+            }
+            if (json == "" || json == null)
+            {
+                Entity entity = new Patient("Max", "Novopashenniy", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", 1, "Moskva", "88005553535", "lol@ya.ru", true, "89128763786", "", null);
+                WriteJson(JsonConvert.SerializeObject(entity), path);
+                json = ReadJson(path);
+            }
+            else
+            {
+                EntityCollection entities = JsonConvert.DeserializeObject<EntityCollection>(json);
+            }
+            return json;
+        }
+        void WriteJson(string json, string path)
+        {
+            bool firstItem = false;
+            using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                if (fileStream.Length == 0)
+                {
+                    fileStream.Close();
+                    File.AppendAllText(path, "[");
+                    firstItem = true;
+                }
+                else
+                {
+                    fileStream.Seek(-1, SeekOrigin.End);
+                    if (fileStream.ReadByte() == ']') fileStream.SetLength(fileStream.Length - 1);
+                    fileStream.Seek(0, SeekOrigin.Begin);
+                }
+            }
+            if (json[0] == '[')
+            {
+                foreach (var item in JsonConvert.DeserializeObject<EntityCollection>(json))
+                {
+                    WriteJson(JsonConvert.SerializeObject(item), path);
+                }
+            }
+            if (firstItem)
+            {
+                File.AppendAllText(path, json + "]");
+                firstItem = false;
+            }
+            else
+            {
+                File.AppendAllText(path, "," + json + "]");
+            }
+        }
+
         int i = 1;
         public MainPage()
         {

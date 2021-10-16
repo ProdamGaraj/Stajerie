@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Stagerie
 {
-    class PrescripteurCollection : ObservableCollection<Prescripteur>
+    class PrescripteurCollection : EntityCollection
     {
         public PrescripteurCollection()
         {

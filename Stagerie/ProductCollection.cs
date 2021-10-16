@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Stagerie
 {
-    public class ProductCollection : ObservableCollection<Product>
+    class ProductCollection : EntityCollection
     {
         public ProductCollection()
         {

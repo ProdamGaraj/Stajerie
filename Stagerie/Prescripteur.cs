@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stagerie
 {
-    class Prescripteur
+    class Prescripteur:Entity
     {
         public string Name { get; set; }
 

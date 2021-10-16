@@ -119,12 +119,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entity.cs" />
+    <Compile Include="EntityCollection.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientCollection.cs" />
-    <Compile Include="PatientJSONParser.cs" />
     <Compile Include="Prescripteur.cs" />
     <Compile Include="PrescripteurCollection.cs" />
-    <Compile Include="PrescripteurJSONParser.cs" />
     <Compile Include="ProductGridView.xaml.cs">
       <DependentUpon>ProductGridView.xaml</DependentUpon>
     </Compile>
@@ -136,7 +136,6 @@
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductCollection.cs" />
-    <Compile Include="ProductJSONParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
