@@ -28,27 +28,41 @@ namespace Stagerie
     {
         string patientJsonPath = @"C:\data\Patients.json";
         string productJsonPath = @"C?\data\Products.json";
-        string ReadJson(string path)
+
+        public static List<string> ReadJson()
         {
             string json = null;
-            using (StreamReader r = new StreamReader(path))
+            List<string> jsonList = new List<string>();
+            string temp = "";
+            using (StreamReader r = new StreamReader("data/Patients.json"))
             {
                 json = r.ReadToEnd();
             }
             if (json == "" || json == null)
             {
-                Entity entity = new Patient("Max", "Novopashenniy", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", 1, "Moskva", "88005553535", "lol@ya.ru", true, "89128763786", "", null);
-                WriteJson(JsonConvert.SerializeObject(entity), path);
-                json = ReadJson(path);
+                throw new Exception("Json file is empty.");
             }
             else
             {
-                EntityCollection entities = JsonConvert.DeserializeObject<EntityCollection>(json);
+                foreach (var item in json)
+                {
+                    if (item == '{')
+                    {
+                        temp += item;
+                    }
+                    if (item == '}')
+                    {
+                        temp += item;
+                        jsonList.Add(temp);
+                        temp = "";
+                    }
+                }
             }
-            return json;
+            return jsonList;
         }
-        void WriteJson(string json, string path)
+        public void WriteJson(string path)
         {
+            string json = JsonConvert.SerializeObject(this);
             bool firstItem = false;
             using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
             {
@@ -65,13 +79,6 @@ namespace Stagerie
                     fileStream.Seek(0, SeekOrigin.Begin);
                 }
             }
-            if (json[0] == '[')
-            {
-                foreach (var item in JsonConvert.DeserializeObject<EntityCollection>(json))
-                {
-                    WriteJson(JsonConvert.SerializeObject(item), path);
-                }
-            }
             if (firstItem)
             {
                 File.AppendAllText(path, json + "]");
@@ -84,8 +91,17 @@ namespace Stagerie
         }
 
         int i = 1;
+        PatientCollection patients = new PatientCollection();
         public MainPage()
         {
+            Patient patient1 = new Patient("Max", "Novopashenniy", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina","Paris", 1, "Moskva", "1", "lol@ya.ru", true, "89128763786", "",DateTime.Today, DateTime.Today, null);
+            Patient patient2 = new Patient("Vasiliy", "Pupkin", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "2", "lol@ya.ru", true, "89128763786", "", DateTime.Today, DateTime.Today, null);
+            Patient patient3 = new Patient("Max", "Lebovski", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "3", "lol@ya.ru", true, "89128763786", "", DateTime.Today, DateTime.Today, null);
+            Patient patient4 = new Patient("Vasiliy", "Novopashenniy", DateTime.UtcNow, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "4", "lol@ya.ru", true, "89128763786", "", DateTime.Today, DateTime.Today, null);
+            patients.Add(patient1);
+            patients.Add(patient2);
+            patients.Add(patient3);
+            patients.Add(patient4);
             this.InitializeComponent();
         }
 
@@ -122,6 +138,48 @@ namespace Stagerie
                 RechercherTab.Visibility = Visibility.Visible;
             }
         }
+
+        public void RechercherNomPrenom_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                if (RechercherNomPrenom.SelectedItem as Patient == null)
+                {
+
+                }
+                else
+                {
+                    RechercherTab.Visibility = Visibility.Collapsed;
+                    AssureNom.IsEditable = true;
+                    AssureNom.Text = (RechercherNomPrenom.SelectedItem as Patient).FirstName.ToString();
+                    AssurePrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).LastName.ToString();
+                    AssureNoSS.Text = (RechercherNomPrenom.SelectedItem as Patient).NumeroSS.ToString();
+                    AssureNoSSCode.Text = 99.ToString();
+                    AssureCPVilleNom.Text = (RechercherNomPrenom.SelectedItem as Patient).TownName.ToString();
+                    AssureCPVilleCode.Text = (RechercherNomPrenom.SelectedItem as Patient).TownIndex.ToString();
+                    AssureCentre.Text = (RechercherNomPrenom.SelectedItem as Patient).Centre.ToString();
+                    AssureTelDom.Text = (RechercherNomPrenom.SelectedItem as Patient).TelephoneNumber.ToString();
+                    AssureNote.Text = (RechercherNomPrenom.SelectedItem as Patient).Note.ToString();
+                    AssureVisitDate.Text = DateTime.Today.ToString();
+
+                    //PatientTab 
+                    PatientNom.Text = (RechercherNomPrenom.SelectedItem as Patient).FirstName.ToString();
+                    PatientPrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).LastName.ToString();
+                    PatientLienNe.IsEditable = false;
+                    PatientLienNeDate.Text = (RechercherNomPrenom.SelectedItem as Patient).BirthDate.ToString();
+                    PatientLienNeNumber.IsReadOnly = true;
+                    PatientMail.Text = (RechercherNomPrenom.SelectedItem as Patient).TelephoneNumber.ToString();
+                    PatientCodeRemb.Text = (RechercherNomPrenom.SelectedItem as Patient).Adress.ToString();
+                    PatientMutuCB.Text = (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString();
+                    PatientMutu.IsChecked = (RechercherNomPrenom.SelectedItem as Patient).Mutu;
+                    PatientNoAdhMutu.Text = (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString();
+                    PatientStartDate.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToString();
+                    PatientEndDate.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToString();
+                    AssureNom.IsEditable = false;
+                }
+            }
+        }
+
         //Colorising tabs
         private void RechercherTabLostFocus(object sender, RoutedEventArgs e)
         {
@@ -161,6 +219,11 @@ namespace Stagerie
         private void PrescripteurTab_LostFocus(object sender, RoutedEventArgs e)
         {
             PrescripteurRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
+        }
+
+        private void RechercherNomPrenom_PreviewKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
         }
     }
 }

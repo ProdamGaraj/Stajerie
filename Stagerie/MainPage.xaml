@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" Height="1000">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" Height="1000" Width="1920">
 
 
     <Page.Resources>
@@ -43,7 +43,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="20,135,0,0" Text="No SS" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,168,0,0" Text="Adresse" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" Text="CP Ville" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                        <ComboBox IsEditable="true" x:Name="AssureNom" Margin="116,61,0,0" Width="478" Height="34"/>
+                        <ComboBox IsEditable="false" x:Name="AssureNom" Margin="116,61,0,0" Width="478" Height="34"/>
                         <TextBox x:Name="AssurePrenom" HorizontalAlignment="Left" Height="28" Margin="115,97,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="479"/>
                         <TextBox x:Name="AssureAdresse" HorizontalAlignment="Left" Height="28" Margin="116,163,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478"/>
                         <ComboBox IsEditable="true" x:Name="AssureCPVilleCode" Margin="116,196,0,0" Width="115" Height="31"/>
@@ -68,7 +68,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="20,150,0,0" Text="Ne(e) je" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="18,195,0,0" Text="Code Postal" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="19,232,0,0" Text="Recherche" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                        <ComboBox IsEditable="true" x:Name="RechercherNomPrenom" Margin="116,62,0,0" Width="478" Height="31" AutomationProperties.Name="RechercherNomPrenom"/>
+                        <ComboBox IsEditable="true" x:Name="RechercherNomPrenom" Margin="116,62,0,0" Width="478" Height="31" AutomationProperties.Name="RechercherNomPrenom" PreviewKeyDown="RechercherNomPrenom_KeyDown" ItemsSource="{x:Bind patients}"/>
                         <TextBox x:Name="RechercherNoSS" HorizontalAlignment="Left" Height="34" Margin="116,101,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="RechercherNoSS"/>
                         <ComboBox IsEditable="true" x:Name="RechercherNeJe" Margin="117,141,0,0" Width="478" Height="33" AutomationProperties.Name="RechercherNeJe"/>
                         <TextBox x:Name="CodePostal" HorizontalAlignment="Left" Height="35" Margin="117,184,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="CodePostal"/>

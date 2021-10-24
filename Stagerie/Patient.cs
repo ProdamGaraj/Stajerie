@@ -17,6 +17,8 @@ namespace Stagerie
 
         public string Adress { get; set; }
 
+        public string TownName { get; set; }
+
         public int TownIndex { get; set; }
 
         public string Centre { get; set; }
@@ -31,6 +33,10 @@ namespace Stagerie
 
         public string Note { get; set; }
 
+        public DateTime DroitSince { get; set; }
+
+        public DateTime DroitTo { get; set; }
+
         public DateTime? ModifiedAt { get; set; }
 
         public Patient()
@@ -38,7 +44,7 @@ namespace Stagerie
 
         }
 
-        public Patient(string firstName, string lastName, DateTime birthDate, long numeroSS, string sSName, string nAdh, string adress, int townIndex, string centre, string telephoneNumber, string eMail, bool mutu, string mutuNumber, string note, DateTime? modifiedAt)
+        public Patient(string firstName, string lastName, DateTime birthDate, long numeroSS, string sSName, string nAdh, string adress, string townName, int townIndex, string centre, string telephoneNumber, string eMail, bool mutu, string mutuNumber, string note, DateTime droitSince, DateTime droitTo, DateTime? modifiedAt)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -47,6 +53,7 @@ namespace Stagerie
             SSName = sSName;
             NAdh = nAdh;
             Adress = adress;
+            TownName = townName;
             TownIndex = townIndex;
             Centre = centre;
             TelephoneNumber = telephoneNumber;
@@ -54,7 +61,13 @@ namespace Stagerie
             Mutu = mutu;
             MutuNumber = mutuNumber;
             Note = note;
+            DroitSince = droitSince;
+            DroitTo = droitTo;
             ModifiedAt = modifiedAt;
+        }
+        public override string ToString()
+        {
+            return FirstName + ' ' + LastName;
         }
     }
 }
