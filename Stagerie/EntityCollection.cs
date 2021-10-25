@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace Stagerie
 {
-    class EntityCollection:ObservableCollection<Entity>
+    class EntityCollection : ObservableCollection<Entity>
     {
         public EntityCollection()
         {
 
+        }
+        public void WriteJson(string path)
+        {
+            foreach (var item in this)
+            {
+                item.WriteJson(path);
+            }
         }
     }
 }

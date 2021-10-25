@@ -20,7 +20,11 @@ namespace Stagerie
 
         public int Finess { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public string Spec { get; set; }
+
+        public string SpecType { get; set; }
 
         public DateTime? ModifiedAt { get; set; }
 
@@ -29,7 +33,7 @@ namespace Stagerie
 
         }
 
-        public Prescripteur(string name, string lastName, string hospital, string rPPS, int id, int finess, string spec, DateTime? modifiedAt)
+        public Prescripteur(string name, string lastName, string hospital, string rPPS, int id, int finess,string phoneNumber ,string spec,string specType ,DateTime? modifiedAt)
         {
             Name = name;
             LastName = lastName;
@@ -37,8 +41,14 @@ namespace Stagerie
             RPPS = rPPS;
             Id = id;
             Finess = finess;
+            PhoneNumber = phoneNumber;
             Spec = spec;
+            SpecType = specType;
             ModifiedAt = modifiedAt;
+        }
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
