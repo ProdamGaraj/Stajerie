@@ -9,6 +9,8 @@ namespace Stagerie
 {
     class ProductCollection : EntityCollection
     {
+        public List<String> List { get; set; }
+
         public ProductCollection()
         {
 

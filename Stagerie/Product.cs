@@ -51,5 +51,10 @@ namespace Stagerie
             Qte = qte;
             Montant = montant;
         }
+
+        public override string ToString()
+        {
+            return ProductName;
+        }
     }
 }

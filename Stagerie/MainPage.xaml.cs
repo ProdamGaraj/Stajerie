@@ -31,12 +31,12 @@ namespace Stagerie
         const string patientJsonPath = @"C:\data\Patients.json";
         const string productJsonPath = @"C?\data\Products.json";
 
-        public static List<string> ReadJson()
+        public static List<string> ReadJson(string path)
         {
             string json = null;
             List<string> jsonList = new List<string>();
             string temp = "";
-            using (StreamReader r = new StreamReader("data/Patients.json"))
+            using (StreamReader r = new StreamReader(path))
             {
                 json = r.ReadToEnd();
             }
@@ -63,13 +63,17 @@ namespace Stagerie
             return jsonList;
         }
 
+        public List<String> productNames = new List<String>();
 
         int i = 1;
         PatientCollection patients = new PatientCollection();
         PrescripteurCollection prescripteurs = new PrescripteurCollection();
+        ProductCollection products = new ProductCollection();
+        AllProductsCollection allProducts = new AllProductsCollection();
 
         public MainPage()
         {
+            
             Patient patient1 = new Patient("Max", "Novopashenniy", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "1", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
             Patient patient2 = new Patient("Vasiliy", "Pupkin", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "2", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
             Patient patient3 = new Patient("Max", "Lebovski", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "3", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
@@ -86,6 +90,15 @@ namespace Stagerie
             prescripteurs.Add(prescripteur1);
             prescripteurs.Add(prescripteur2);
             prescripteurs.Add(prescripteur3);
+            Product emptyProduct = new Product();
+
+            allProducts.ProductNames.Add("doliprane");
+            allProducts.ProductNames.Add("meth");
+            allProducts.ProductNames.Add("weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed");
+            allProducts.ProductNames.Add("analgin");
+            products.List = productNames;
+            products.Add(emptyProduct);
+
             this.InitializeComponent();
         }
 

@@ -12,6 +12,7 @@
 
     <Page.Resources>
         <local:ProductCollection x:Key="ProductCollection"/>
+
     </Page.Resources>
 
 
@@ -183,8 +184,7 @@
             </Button>
             <Button Tapped="OnAnnulerButtonClick" Content="Annuler" Margin="1810,68,0,0" VerticalAlignment="Top" CanDrag="True" AutomationProperties.Name="AnnulerButton" ManipulationMode="System"/>
         </Grid>
-        <GridView x:Name="ProductTab" ItemsSource="{StaticResource ProductCollection}"
-
+        <GridView x:Name="ProductTab" ItemsSource="{x:Bind products}"
                   IsItemClickEnabled="False"
                   IsSwipeEnabled="true"
                   SelectionMode="None"  Margin="0,602,0,40"
@@ -198,8 +198,8 @@
                   AutomationProperties.Name="ProductTab"
                   UseLayoutRounding="False"
                   BorderThickness="0,1,0,0"
-                  
                   >
+
             <GridView.Header>
                 <Grid RequestedTheme="Light"
                       BorderThickness="1,1,1,1" HorizontalAlignment="Center"
@@ -218,6 +218,7 @@
                         <ColumnDefinition Width="255"/>
                         <ColumnDefinition Width="366"/>
                     </Grid.ColumnDefinitions>
+
                     <TextBlock Grid.Column="0" Text="№" HorizontalAlignment="Left" FocusVisualPrimaryBrush="#E4000000" Margin="0,0,0,2"/>
                     <TextBlock Grid.Column="1" Text="ProductName" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
                     <TextBlock Grid.Column="2" Text="Liste" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
@@ -232,15 +233,14 @@
                     <TextBlock Grid.Column="11" Text="Montant" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
                 </Grid>
             </GridView.Header>
-
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapGrid Orientation="Horizontal" ItemHeight="28"/>
+                    <WrapGrid Orientation="Horizontal" ItemHeight="31"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
             <GridView.ItemTemplate>
-                <DataTemplate >
+                <DataTemplate>
                     <Grid Height="338" Width="1931">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="21" />
@@ -258,7 +258,13 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding No}" Tag="№" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <ComboBox IsEditable="true" Grid.Column="1" Text="{Binding ProductName}" Tag="ProductName" HorizontalAlignment="Center" Width="378" Height="32"/>
+
+                        <ComboBox x:Name="ProductCombo" IsEditable="true" Grid.Column="1" Tag="ProductName" HorizontalAlignment="Center" Width="378" Height="32" ItemsSource="{Binding ProductNames}">
+                            <ComboBox.DataContext>
+                                <local:AllProductsCollection/>
+                            </ComboBox.DataContext>
+                        </ComboBox>
+
                         <TextBlock Grid.Column="2" Text="{Binding Liste}" Tag="Liste"/>
                         <TextBlock Grid.Column="3" Text="{Binding Stock}" Tag="Stock"/>
                         <TextBlock Grid.Column="4" Text="{Binding Cmd}" Tag="Cmd"/>
