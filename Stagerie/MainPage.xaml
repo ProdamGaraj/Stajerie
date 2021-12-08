@@ -184,26 +184,9 @@
             </Button>
             <Button Tapped="OnAnnulerButtonClick" Content="Annuler" Margin="1810,68,0,0" VerticalAlignment="Top" CanDrag="True" AutomationProperties.Name="AnnulerButton" ManipulationMode="System"/>
         </Grid>
-        <GridView x:Name="ProductTab" ItemsSource="{x:Bind products}"
-                  IsItemClickEnabled="False"
-                  IsSwipeEnabled="true"
-                  SelectionMode="None"  Margin="0,602,0,40"
-                  Background="#FFC9C8C8"
-                  BorderBrush="Black"
-                  RequestedTheme="Light"
-                  Foreground="Black"
-                  FocusVisualPrimaryBrush="Black"
-                  FocusVisualSecondaryBrush="Black"
-                  Width="1920"
-                  AutomationProperties.Name="ProductTab"
-                  UseLayoutRounding="False"
-                  BorderThickness="0,1,0,0"
-                  >
-
-            <GridView.Header>
-                <Grid RequestedTheme="Light"
-                      BorderThickness="1,1,1,1" HorizontalAlignment="Center"
-                      >
+        <Grid Margin="0,615,0,0">
+            <ScrollViewer CanContentRenderOutsideBounds="True" CanBeScrollAnchor="True" VerticalScrollBarVisibility="Auto">
+                <Grid Margin="0, 0, 0, 0" x:Name="ProductGrid" BorderBrush="Black" BorderThickness="0.5" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="21"/>
                         <ColumnDefinition Width="378"/>
@@ -218,67 +201,49 @@
                         <ColumnDefinition Width="255"/>
                         <ColumnDefinition Width="366"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31"/>
+                    </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="№" HorizontalAlignment="Left" FocusVisualPrimaryBrush="#E4000000" Margin="0,0,0,2"/>
-                    <TextBlock Grid.Column="1" Text="ProductName" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="2" Text="Liste" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
-                    <TextBlock Grid.Column="3" Text="Stock" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="4" Text="Cmd" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="5" Text="CodeActe" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="6" Text="TVA" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="7" Text="Base" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="8" Text="PrixTTC" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="9" Text="Remise" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="10" Text="Qte" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
-                    <TextBlock Grid.Column="11" Text="Montant" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
-                </Grid>
-            </GridView.Header>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapGrid Orientation="Horizontal" ItemHeight="31"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="338" Width="1931">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="21" />
-                            <ColumnDefinition Width="378"/>
-                            <ColumnDefinition Width="69"/>
-                            <ColumnDefinition Width="92"/>
-                            <ColumnDefinition Width="87"/>
-                            <ColumnDefinition Width="85"/>
-                            <ColumnDefinition Width="114"/>
-                            <ColumnDefinition Width="144"/>
-                            <ColumnDefinition Width="128"/>
-                            <ColumnDefinition Width="169"/>
-                            <ColumnDefinition Width="255"/>
-                            <ColumnDefinition Width="366"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Column="0" Text="{Binding No}" Tag="№" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-
-                        <ComboBox x:Name="ProductCombo" IsEditable="true" Grid.Column="1" Tag="ProductName" HorizontalAlignment="Center" Width="378" Height="32" ItemsSource="{Binding ProductNames}">
-                            <ComboBox.DataContext>
-                                <local:AllProductsCollection/>
-                            </ComboBox.DataContext>
-                        </ComboBox>
-
-                        <TextBlock Grid.Column="2" Text="{Binding Liste}" Tag="Liste"/>
-                        <TextBlock Grid.Column="3" Text="{Binding Stock}" Tag="Stock"/>
-                        <TextBlock Grid.Column="4" Text="{Binding Cmd}" Tag="Cmd"/>
-                        <TextBlock Grid.Column="5" Text="{Binding CodeActe}" Tag="CodeActe"/>
-                        <TextBlock Grid.Column="6" Text="{Binding TVA}" Tag="TVA"/>
-                        <TextBlock Grid.Column="7" Text="{Binding Base}" Tag="Base"/>
-                        <TextBlock Grid.Column="8" Text="{Binding PrixTTC}" Tag="PrixTTC"/>
-                        <TextBlock Grid.Column="9" Text="{Binding Remise}" Tag="Remise"/>
-                        <TextBlock Grid.Column="10" Text="{Binding Qte}" Tag="Qte"/>
-                        <TextBlock Grid.Column="11" Text="{Binding Montant}" Tag="Montant"/>
+                    <Grid Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock Text="№" HorizontalAlignment="Left" FocusVisualPrimaryBrush="#E4000000" Margin="0,0,0,2"/>
                     </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+                    <Grid  Grid.Column="1"  Grid.Row="0"  BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock Grid.Column="1"  Grid.Row="0" Text="ProductName" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="2"  Grid.Row="0" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Liste" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
+                    </Grid>
+                    <Grid Grid.Column="3" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Stock" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="4" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock Text="Cmd" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid  Grid.Column="5" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="CodeActe" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid  Grid.Column="6" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="TVA" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="7" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Base" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="8" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="PrixTTC" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="9" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Remise" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="10" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Qte" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000" />
+                    </Grid>
+                    <Grid Grid.Column="11" BorderBrush="Black" BorderThickness="0.5">
+                        <TextBlock  Text="Montant" HorizontalAlignment="Center" FocusVisualPrimaryBrush="#E4000000"/>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
         <Grid x:Name="Tail" Margin="0,960,0,0" Width="1920" Background="#FF6531B0"/>
         <Button Content="Button" Height="0" Margin="406,1067,0,0" VerticalAlignment="Top"/>
     </Grid>

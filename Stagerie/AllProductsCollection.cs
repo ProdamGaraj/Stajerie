@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Stagerie
 {
-    class AllProductsCollection
+    class AllProductsCollection:ObservableCollection<string>
     {
-        public ObservableCollection<string> ProductNames { get; set; } = new ObservableCollection<string>();
+        public string ProductNames { get; set; }
         public AllProductsCollection()
         {
 
