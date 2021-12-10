@@ -45,18 +45,18 @@
                         <TextBlock HorizontalAlignment="Left" Margin="20,168,0,0" Text="Adresse" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" Text="CP Ville" TextWrapping="Wrap" VerticalAlignment="Center"/>
                         <ComboBox IsEditable="True" x:Name="AssureNom" Margin="116,61,0,0" Width="478" Height="34"/>
-                        <TextBox x:Name="AssurePrenom" HorizontalAlignment="Left" Height="28" Margin="115,97,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="479"/>
-                        <TextBox x:Name="AssureAdresse" HorizontalAlignment="Left" Height="28" Margin="116,163,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478"/>
+                        <TextBox x:Name="AssurePrenom" HorizontalAlignment="Left" Height="28" Margin="115,97,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="479"/>
+                        <TextBox x:Name="AssureAdresse" HorizontalAlignment="Left" Height="28" Margin="116,163,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="478"/>
                         <ComboBox IsEditable="true" x:Name="AssureCPVilleCode" Margin="116,196,0,0" Width="115" Height="31"/>
-                        <TextBox x:Name="AssureNoSS" HorizontalAlignment="Left" Height="28" Margin="115,130,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="355"/>
-                        <TextBox x:Name="AssureNoSSCode" HorizontalAlignment="Left" Height="28" Margin="475,130,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
+                        <TextBox x:Name="AssureNoSS" HorizontalAlignment="Left" Height="28" Margin="115,130,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="355"/>
+                        <TextBox x:Name="AssureNoSSCode" HorizontalAlignment="Left" Height="28" Margin="475,130,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
                         <ComboBox IsEditable="true" x:Name="AssureCPVilleNom" Margin="236,195,0,0" Width="358" Height="32"/>
                         <ComboBox IsEditable="true" x:Name="AssureCentre" Margin="116,229,0,0" Width="279" Height="33"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,233,0,0" Text="Centre" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                        <TextBox x:Name="AssureTelDom" HorizontalAlignment="Left" Height="28" Margin="115,294,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="479"/>
+                        <TextBox x:Name="AssureTelDom" HorizontalAlignment="Left" Height="28" Margin="115,294,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="479"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,299,0,0" Text="Tel Dom" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,332,0,0" Text="Note" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                        <TextBox x:Name="AssureNote" HorizontalAlignment="Left" Height="28" Margin="116,327,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="319"/>
+                        <TextBox x:Name="AssureNote" HorizontalAlignment="Left" Height="28" Margin="116,327,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="319"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,360,0,0" Text="D: visite" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock x:Name="AssureVisitDate" HorizontalAlignment="Left" Margin="116,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="01/01/2021"/>
                         <StackPanel/>
@@ -70,23 +70,23 @@
                         <TextBlock HorizontalAlignment="Left" Margin="18,195,0,0" Text="Code Postal" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="19,232,0,0" Text="Recherche" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <ComboBox IsEditable="true" x:Name="RechercherNomPrenom" Margin="116,62,0,0" Width="478" Height="31" AutomationProperties.Name="RechercherNomPrenom" PreviewKeyDown="RechercherNomPrenom_KeyDown" ItemsSource="{x:Bind patients}"/>
-                        <TextBox x:Name="RechercherNoSS" HorizontalAlignment="Left" Height="34" Margin="116,101,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="RechercherNoSS"/>
+                        <TextBox x:Name="RechercherNoSS" HorizontalAlignment="Left" Height="34" Margin="116,101,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="RechercherNoSS"/>
                         <ComboBox IsEditable="true" x:Name="RechercherNeJe" Margin="117,141,0,0" Width="478" Height="33" AutomationProperties.Name="RechercherNeJe"/>
-                        <TextBox x:Name="CodePostal" HorizontalAlignment="Left" Height="35" Margin="117,184,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="CodePostal"/>
+                        <TextBox x:Name="RechercherCodePostal" HorizontalAlignment="Left" Height="35" Margin="117,184,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="478" AutomationProperties.Name="CodePostal"/>
                         <ComboBox IsEditable="true" x:Name="RechercherType" Margin="117,228,0,0" Width="478" Height="34" AutomationProperties.Name="RechercherType" FocusVisualPrimaryBrush="#FFA188C6"/>
                     </Grid>
                     <Grid x:Name="PatientTab" GotFocus="PatientTab_GotFocus" LostFocus="PatientTab_LostFocus" Grid.Column="1" HorizontalAlignment="Left" Height="418" Margin="265,0,0,0" VerticalAlignment="Center" Width="610" Grid.Row="1">
                         <Rectangle x:Name="PatientRect" HorizontalAlignment="Center" Height="418" Stroke="Black" VerticalAlignment="Center" Width="610" RadiusX="10" RadiusY="10" Fill="#FFC9C8C8"/>
                         <TextBlock HorizontalAlignment="Left" Margin="22,22,0,0" Text="Patient" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="552" Foreground="#FF652BB9" FontSize="25"/>
-                        <TextBox TextChanged="PatientNom_TextChanged" x:Name="PatientNom" HorizontalAlignment="Left" Height="34" Margin="152,59,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="448"/>
-                        <TextBox x:Name="PatientMail" HorizontalAlignment="Left" Height="28" Margin="150,175,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="268"/>
-                        <TextBox x:Name="PatientEndDate" HorizontalAlignment="Left" Height="28" Margin="406,357,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
-                        <TextBox x:Name="PatientNoAdhMutu" HorizontalAlignment="Left" Height="28" Margin="151,324,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="454"/>
-                        <TextBox x:Name="PatientStartDate" HorizontalAlignment="Left" Height="28" Margin="151,357,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
+                        <TextBox TextChanged="PatientNom_TextChanged" x:Name="PatientNom" HorizontalAlignment="Left" Height="34" Margin="152,59,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="448"/>
+                        <TextBox x:Name="PatientMail" HorizontalAlignment="Left" Height="28" Margin="150,175,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="268"/>
+                        <TextBox x:Name="PatientEndDate" HorizontalAlignment="Left" Height="28" Margin="406,357,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
+                        <TextBox x:Name="PatientNoAdhMutu" HorizontalAlignment="Left" Height="28" Margin="151,324,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="454"/>
+                        <TextBox x:Name="PatientStartDate" HorizontalAlignment="Left" Height="28" Margin="151,357,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
                         <ComboBox IsEditable="true" x:Name="PatientLienNe" Margin="152,137,0,0" Width="192" Height="31"/>
-                        <TextBox x:Name="PatientPrenom" HorizontalAlignment="Left" Height="28" Margin="152,99,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="449"/>
-                        <TextBox x:Name="PatientLienNeDate" HorizontalAlignment="Left" Height="28" Margin="345,137,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
-                        <TextBox x:Name="PatientLienNeNumber" HorizontalAlignment="Left" Height="28" Margin="478,137,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="18"/>
+                        <TextBox x:Name="PatientPrenom" HorizontalAlignment="Left" Height="28" Margin="152,99,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="449"/>
+                        <TextBox x:Name="PatientLienNeDate" HorizontalAlignment="Left" Height="28" Margin="345,137,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                        <TextBox x:Name="PatientLienNeNumber" HorizontalAlignment="Left" Height="28" Margin="478,137,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="18"/>
                         <ComboBox IsEditable="true" x:Name="PatientCodeRemb" Margin="151,212,0,0" Width="304" Height="32"/>
                         <ComboBox IsEditable="true" x:Name="PatientMutuCB" Margin="151,248,0,0" Width="214" Height="33"/>
                         <ComboBox IsEditable="true" x:Name="PatientContral" Margin="151,285,0,0" Width="454" Height="33"/>
@@ -109,10 +109,10 @@
                         <Rectangle x:Name="PrescripteurRect" HorizontalAlignment="Left" Height="418" Stroke="Black" VerticalAlignment="Center" Width="610" RadiusX="10" RadiusY="10" Fill="#FFC9C8C8" Grid.ColumnSpan="2"/>
                         <TextBlock HorizontalAlignment="Left" Margin="24,22,0,0" Text="Prescripteur" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="550" Foreground="#FF652BB9" FontSize="25" Grid.ColumnSpan="2"/>
                         <ComboBox x:Name="PrescripteurNom" IsEditable="True" PreviewKeyDown="PrescripteurNom_KeyDown" HorizontalAlignment="Left" Height="31" Margin="146,61,0,0" Text="" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2" ItemsSource="{x:Bind prescripteurs}"/>
-                        <TextBox x:Name="PrescripteurPrenom" HorizontalAlignment="Left" Height="28" Margin="146,94,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="PrescripteurRPPS" HorizontalAlignment="Left" Height="28" Margin="147,162,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="PrescripteurIdFiness" HorizontalAlignment="Left" Height="28" Margin="146,197,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="PrescripteurTel" HorizontalAlignment="Left" Height="35" Margin="146,266,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="PrescripteurPrenom" HorizontalAlignment="Left" Height="28" Margin="146,94,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="PrescripteurRPPS" HorizontalAlignment="Left" Height="28" Margin="147,162,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="PrescripteurIdFiness" HorizontalAlignment="Left" Height="28" Margin="146,197,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="PrescripteurTel" HorizontalAlignment="Left" Height="35" Margin="146,266,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" Grid.ColumnSpan="2"/>
                         <ComboBox IsEditable="true" x:Name="PrescripteurHopital" Margin="146,127,0,0" Width="428" Height="33" Grid.ColumnSpan="2"/>
                         <ComboBox IsEditable="true" x:Name="PrescripteurSpec" Margin="146,230,0,0" Width="319" Height="33" Grid.ColumnSpan="2"/>
                         <ComboBox IsEditable="true" x:Name="PrescripteurSpecType" Margin="80,228,0,0" Width="104" Height="35" Grid.Column="1"/>
