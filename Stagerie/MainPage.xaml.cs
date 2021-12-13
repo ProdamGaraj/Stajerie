@@ -84,25 +84,6 @@ namespace Stagerie
             Product product5 = new Product("0909123798213", "kek", "5", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
             Product product6 = new Product("0909123798213", "baby", "6", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
             Product product7 = new Product("0909123798213", "mamacita", "7", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
-
-            Patient patient1 = new Patient("Max", "Novopashenniy", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "1", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient2 = new Patient("Vasiliy", "Pupkin", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "2", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient3 = new Patient("Max", "Lebovski", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "3", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient4 = new Patient("Vasiliy", "Novopashenniy", DateTime.Now.Date, 01892734, "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", 1, "Moskva", "4", "lol@ya.ru", true, "89128763786", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient0 = new Patient("", "", DateTime.Now.Date, 0, "", "", "", "", 0, "", "", "", false, "", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            patients.Add(patient0);
-            patients.Add(patient1);
-            patients.Add(patient2);
-            patients.Add(patient3);
-            patients.Add(patient4);
-            Prescripteur prescripteur = new Prescripteur("Vrach", "Vrachev", "Hospital", "5621273612", 263, 32, "880005553535", "specification", "specType", null);
-            Prescripteur prescripteur1 = new Prescripteur("Matilda", "Kekova", "Hospital", "5354342", 263, 32, "880005553535", "specification", "specType", null);
-            Prescripteur prescripteur2 = new Prescripteur("Pipa", "Popich", "Hospital", "125435", 263, 32, "880005553535", "specification", "specType", null);
-            Prescripteur prescripteur3 = new Prescripteur("Keker", "Lolov", "Hospital", "765432352", 263, 32, "880005553535", "specification", "specType", null);
-            prescripteurs.Add(prescripteur);
-            prescripteurs.Add(prescripteur1);
-            prescripteurs.Add(prescripteur2);
-            prescripteurs.Add(prescripteur3);
             products.Add(product);
             products.Add(product1);
             products.Add(product2);
@@ -111,6 +92,29 @@ namespace Stagerie
             products.Add(product5);
             products.Add(product6);
             products.Add(product7);
+
+            Patient patient1 = new Patient("Max", "Novopashenniy", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "1", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
+            Patient patient2 = new Patient("Vasiliy", "Pupkin", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "22", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
+            Patient patient3 = new Patient("Max", "Lebovski", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "333", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
+            Patient patient4 = new Patient("Vasiliy", "Novopashenniy", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "4444", "Moskva", "88005553535", "lol@ya.ru", true, "NutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
+            Patient patient0 = new Patient("", "", DateTime.Now.Date, "0", "", "", "", "", "0", "", "", "", false, "", "", DateTime.Now.Date, DateTime.Now.Date, null);
+            patients.Add(patient0);
+            patients.Add(patient1);
+            patients.Add(patient2);
+            patients.Add(patient3);
+            patients.Add(patient4);
+            RechercherNomPrenom.ItemsSource = patients;
+
+            Prescripteur prescripteur = new Prescripteur("Vrach", "Vrachev", "Hospital", "5621273612", 263, 32, "880005553535", "specification", "specType", null);
+            Prescripteur prescripteur1 = new Prescripteur("Matilda", "Kekova", "Hospital", "5354342", 263, 32, "880005553535", "specification", "specType", null);
+            Prescripteur prescripteur2 = new Prescripteur("Pipa", "Popich", "Hospital", "125435", 263, 32, "880005553535", "specification", "specType", null);
+            Prescripteur prescripteur3 = new Prescripteur("Keker", "Lolov", "Hospital", "765432352", 263, 32, "880005553535", "specification", "specType", null);
+            prescripteurs.Add(prescripteur);
+            prescripteurs.Add(prescripteur1);
+            prescripteurs.Add(prescripteur2);
+            prescripteurs.Add(prescripteur3);
+
+
 
             foreach (var item in products)
             {
@@ -124,6 +128,7 @@ namespace Stagerie
             Grid.SetColumn(grid, 1);
             Grid.SetRow(grid, 1);
             DoNewProductLine(ProductGrid);
+            InputLockChanger();
         }
 
         private void TabView_AddTabButtonClick(muxc.TabView sender, object args)
@@ -158,7 +163,7 @@ namespace Stagerie
             {
                 //RechercherTabAnnuler
                 RechercherTab.Visibility = Visibility.Visible;
-                RechercherNomPrenom.SelectedItem = "";
+                RechercherNomPrenom.SelectedItem = null;
                 AssureNom.IsEditable = true;
                 AssureNom.SelectedItem = "";
                 AssurePrenom.Text = "";
@@ -182,11 +187,11 @@ namespace Stagerie
                 PatientCodeRemb.Text = "";
                 PatientMail.Text = "";
                 PatientCodeRemb.SelectedItem = "";
-                PatientMutuCB.SelectedItem = "";
+                PatientMutuNumber.SelectedItem = "";
                 PatientMutu.IsChecked = false;
                 PatientNoAdhMutu.Text = "";
-                PatientStartDate.Text = "";
-                PatientEndDate.Text = "";
+                PatientDroitSince.Text = "";
+                PatientDroitTo.Text = "";
                 AssureNom.IsEditable = true;
                 RechercherTab.Visibility = Visibility.Visible;
 
@@ -202,7 +207,6 @@ namespace Stagerie
                 PrescripteurDateOrig.SelectedItem = "";
                 PrescripteurDateOrigOrd.SelectedItem = "";
                 PrescripteurDateFac.SelectedItem = "";
-
             }
         }
 
@@ -232,12 +236,12 @@ namespace Stagerie
             PatientLienNeNumber.IsEnabled = !PatientLienNeNumber.IsEnabled;
             PatientMail.IsEnabled = !PatientMail.IsEnabled;
             PatientCodeRemb.IsEnabled = !PatientCodeRemb.IsEnabled;
-            PatientMutuCB.IsEnabled = !PatientMutuCB.IsEnabled;
+            PatientMutuNumber.IsEnabled = !PatientMutuNumber.IsEnabled;
             PatientMutu.IsEnabled = !PatientMutu.IsEnabled;
             PatientContral.IsEnabled = !PatientContral.IsEnabled;
             PatientNoAdhMutu.IsEnabled = !PatientNoAdhMutu.IsEnabled;
-            PatientStartDate.IsEnabled = !PatientStartDate.IsEnabled;
-            PatientEndDate.IsEnabled = !PatientEndDate.IsEnabled;
+            PatientDroitSince.IsEnabled = !PatientDroitSince.IsEnabled;
+            PatientDroitTo.IsEnabled = !PatientDroitTo.IsEnabled;
             //Prescripteur lock
             PrescripteurNom.IsEnabled = !PrescripteurNom.IsEnabled;
             PrescripteurPrenom.IsEnabled = !PrescripteurPrenom.IsEnabled;
@@ -253,6 +257,7 @@ namespace Stagerie
 
 
         }
+
         public bool IsInputLocked()
         {
             return AssureNom.IsEnabled;
@@ -264,7 +269,7 @@ namespace Stagerie
             {
                 if (RechercherNomPrenom.SelectedItem as Patient != null)
                 {
-                    if ((RechercherNomPrenom.SelectedItem as Patient).FirstName != "")
+                    if ((RechercherNomPrenom.SelectedItem as Patient).Nom != "")
                     {
                         if (!IsInputLocked())//if closed -> open
                         {
@@ -272,38 +277,38 @@ namespace Stagerie
                         }
                         //AssureTab
                         RechercherTab.Visibility = Visibility.Collapsed;
-                        AssureNom.Text = (RechercherNomPrenom.SelectedItem as Patient).FirstName.ToString();
-                        AssurePrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).LastName.ToString();
-                        AssureNoSS.Text = (RechercherNomPrenom.SelectedItem as Patient).NumeroSS.ToString();
-                        AssureNoSSCode.Text = 99.ToString();
-                        AssureCPVilleNom.Text = (RechercherNomPrenom.SelectedItem as Patient).TownName.ToString();
-                        AssureCPVilleCode.Text = (RechercherNomPrenom.SelectedItem as Patient).TownIndex.ToString();
+                        AssureNom.Text = (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString();
+                        AssurePrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString();
+                        AssureNoSS.Text = (RechercherNomPrenom.SelectedItem as Patient).NoSS.ToString();
+                        AssureNoSSCode.Text = (RechercherNomPrenom.SelectedItem as Patient).NoSSCode.ToString();
+                        AssureCPVilleNom.Text = (RechercherNomPrenom.SelectedItem as Patient).CPVilleNom.ToString();
+                        AssureCPVilleCode.Text = (RechercherNomPrenom.SelectedItem as Patient).CPVilleCode.ToString();
                         AssureCentre.Text = (RechercherNomPrenom.SelectedItem as Patient).Centre.ToString();
-                        AssureTelDom.Text = (RechercherNomPrenom.SelectedItem as Patient).TelephoneNumber.ToString();
+                        AssureTelDom.Text = (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString();
                         AssureNote.Text = (RechercherNomPrenom.SelectedItem as Patient).Note.ToString();
                         AssureVisitDate.Text = DateTime.Today.ToString();
 
                         //PatientTab 
-                        PatientNom.Text = (RechercherNomPrenom.SelectedItem as Patient).FirstName.ToString();
-                        PatientPrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).LastName.ToString();
+                        PatientNom.Text = (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString();
+                        PatientPrenom.Text = (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString();
                         PatientLienNe.IsEditable = false;
-                        PatientLienNeDate.Text = (RechercherNomPrenom.SelectedItem as Patient).BirthDate.ToShortDateString();
+                        PatientLienNeDate.Text = (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString();
                         PatientLienNeNumber.IsReadOnly = true;
-                        PatientMail.Text = (RechercherNomPrenom.SelectedItem as Patient).TelephoneNumber.ToString();
-                        PatientCodeRemb.Text = (RechercherNomPrenom.SelectedItem as Patient).Adress.ToString();
-                        PatientMutuCB.Text = (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString();
+                        PatientMail.Text = (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString();
+                        PatientCodeRemb.Text = (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString();
+                        PatientMutuNumber.Text = (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString();
                         PatientMutu.IsChecked = (RechercherNomPrenom.SelectedItem as Patient).Mutu;
-                        PatientNoAdhMutu.Text = (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString();
-                        PatientStartDate.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString();
-                        PatientEndDate.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString();
+                        PatientNoAdhMutu.Text = (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString();
+                        PatientDroitSince.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString();
+                        PatientDroitTo.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString();
 
                         //la béquille
-                        AssureCPVilleNom.Focus(FocusState.Pointer);
-                        AssureCPVilleCode.Focus(FocusState.Pointer);
-                        AssureCentre.Focus(FocusState.Pointer);
-                        PatientLienNe.Focus(FocusState.Pointer);
-                        PatientCodeRemb.Focus(FocusState.Pointer);
-                        PatientMutuCB.Focus(FocusState.Pointer);
+                        //AssureCPVilleNom.Focus(FocusState.Pointer);
+                        //AssureCPVilleCode.Focus(FocusState.Pointer);
+                        //AssureCentre.Focus(FocusState.Pointer);
+                        //PatientLienNe.Focus(FocusState.Pointer);
+                        //PatientCodeRemb.Focus(FocusState.Pointer);
+                        //PatientMutuNumber.Focus(FocusState.Pointer);
                         AssureNom.Focus(FocusState.Pointer);
                     }
                     else
@@ -362,8 +367,70 @@ namespace Stagerie
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
         }
 
-        private void AssureTab_LostFocus(object sender, RoutedEventArgs e)
+        private async void AssureTab_LostFocus(object sender, RoutedEventArgs e)
         {
+            bool assureTextChangedFlag =
+            RechercherNomPrenom.SelectedItem != null&&(AssureNom.Text != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
+            AssurePrenom.Text != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
+            AssureNoSS.Text != (RechercherNomPrenom.SelectedItem as Patient).NoSS.ToString() ||
+            AssureNoSSCode.Text != (RechercherNomPrenom.SelectedItem as Patient).NoSSCode.ToString() ||
+            AssureCPVilleNom.Text != (RechercherNomPrenom.SelectedItem as Patient).CPVilleNom.ToString() ||
+            AssureCPVilleCode.Text != (RechercherNomPrenom.SelectedItem as Patient).CPVilleCode.ToString() ||
+            AssureCentre.Text != (RechercherNomPrenom.SelectedItem as Patient).Centre.ToString() ||
+            AssureTelDom.Text != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
+            AssureNote.Text != (RechercherNomPrenom.SelectedItem as Patient).Note.ToString());
+
+            int ind = 0;
+            var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
+            var tempCb = new ComboBox();
+            var tempTb = new TextBox();
+            if (assureTextChangedFlag)
+            {
+                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+                ContentDialogResult result = await saveFac.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    foreach (var item in (sender as Grid).Children)
+                    {
+                        if (item.GetType().Equals(tempTb.GetType()))//ALL TEXTBOXES
+                        {
+                            ind = 0;
+                            foreach (var prop in selectedItemProps)
+                            {
+
+                                if ((item as TextBox).Text != " " && (item as TextBox).Text != "" && (item as TextBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                {
+
+                                    prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as TextBox).Text.ToString());
+
+                                    break;
+                                }
+                                ind++;
+                            }
+
+                        }
+                        if (item.GetType().Equals(tempCb.GetType()))//ALL COMBOS
+                        {
+                            ind = 0;
+                            foreach (var prop in selectedItemProps)
+                            {
+
+                                if ((item as ComboBox).Text != "" && (item as ComboBox).Text != " " && (item as ComboBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                {
+
+                                    prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as ComboBox).Text.ToString());
+
+                                    break;
+                                }
+                                ind++;
+                            }
+                        }
+                    }
+                }
+            }
+            RechercherNomPrenom.ItemsSource = patients;
+
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
 
@@ -372,8 +439,81 @@ namespace Stagerie
             PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
         }
 
-        private void PatientTab_LostFocus(object sender, RoutedEventArgs e)
+        private async void PatientTab_LostFocus(object sender, RoutedEventArgs e)
         {
+
+            bool patientTextChangedFlag =
+            RechercherNomPrenom.SelectedItem != null && (PatientNom.Text != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
+            PatientPrenom.Text != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
+            PatientLienNeDate.Text != (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString() ||
+            PatientMail.Text != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
+            PatientCodeRemb.Text != (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString() ||
+            PatientMutuNumber.Text != (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString() ||
+            PatientMutu.IsChecked != (RechercherNomPrenom.SelectedItem as Patient).Mutu ||
+            PatientNoAdhMutu.Text != (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString() ||
+            PatientDroitSince.Text != (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString() ||
+            PatientDroitTo.Text != (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString());
+
+            if (patientTextChangedFlag)
+            {
+                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+                ContentDialogResult result = await saveFac.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    int ind = 0;
+                    var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
+                    var tempCb = new ComboBox();
+                    var tempTb = new TextBox();
+                    foreach (var item in (sender as Grid).Children)
+                    {
+                        if (item.GetType().Equals(tempTb.GetType()))//ALL TEXTBOXES
+                        {
+                            ind = 0;
+                            foreach (var prop in selectedItemProps)
+                            {
+
+                                if ((item as TextBox).Text != " " && (item as TextBox).Text != "" && (item as TextBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                {
+                                    if (prop.Name == "LienNeDate" || prop.Name == "DroitSince" || prop.Name == "DroitTo" || prop.Name == "ModifiedAt")
+                                    {
+                                        prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, Convert.ToDateTime((item as TextBox).Text.ToString()));
+                                    }
+                                    else
+                                    {
+                                        prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as TextBox).Text.ToString());
+                                    }
+                                    break;
+                                }
+                                ind++;
+                            }
+
+                        }
+                        if (item.GetType().Equals(tempCb.GetType()))//ALL COMBOS
+                        {
+                            ind = 0;
+                            foreach (var prop in selectedItemProps)
+                            {
+
+                                if ((item as ComboBox).Text != "" && (item as ComboBox).Text != " " && (item as ComboBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                {
+                                    if (prop.Name == "LienNeDate" || prop.Name == "DroitSince" || prop.Name == "DroitTo" || prop.Name == "ModifiedAt")
+                                    {
+                                        prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, Convert.ToDateTime((item as ComboBox).Text.ToString()));
+                                    }
+                                    else
+                                    {
+                                        prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as ComboBox).Text.ToString());
+                                    }
+                                    break;
+                                }
+                                ind++;
+                            }
+                        }
+                    }
+                    RechercherNomPrenom.ItemsSource = patients;
+                }
+            }
             PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
 
