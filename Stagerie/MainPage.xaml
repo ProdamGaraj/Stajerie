@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" Height="1000" Width="1920">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" Height="1080" Width="1920">
 
 
     <Page.Resources>
@@ -244,7 +244,7 @@
                 </Grid>
             </ScrollViewer>
         </Grid>
-        <Grid x:Name="Tail" Margin="0,960,0,0" Width="1920" Background="#FF6531B0"/>
+        <Grid x:Name="Tail" Margin="0,1010,0,0" Width="1920" Background="#FF6531B0"/>
         <Button Content="Button" Height="0" Margin="406,1067,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

@@ -157,13 +157,13 @@ namespace Stagerie
         {
             if (RechercherTab.Visibility == Visibility.Visible)
             {
-                RechercherTab.Visibility = Visibility.Collapsed;
+                //RechercherTab.Visibility = Visibility.Collapsed;
             }
             else
             {
                 //RechercherTabAnnuler
                 RechercherTab.Visibility = Visibility.Visible;
-                RechercherNomPrenom.SelectedItem = null;
+                RechercherNomPrenom.SelectedItem = "";
                 AssureNom.IsEditable = true;
                 AssureNom.SelectedItem = "";
                 AssurePrenom.Text = "";
@@ -207,6 +207,8 @@ namespace Stagerie
                 PrescripteurDateOrig.SelectedItem = "";
                 PrescripteurDateOrigOrd.SelectedItem = "";
                 PrescripteurDateFac.SelectedItem = "";
+
+                InputLockChanger();
             }
         }
 
@@ -369,16 +371,25 @@ namespace Stagerie
 
         private async void AssureTab_LostFocus(object sender, RoutedEventArgs e)
         {
-            bool assureTextChangedFlag =
-            RechercherNomPrenom.SelectedItem != null&&(AssureNom.Text != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
-            AssurePrenom.Text != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
-            AssureNoSS.Text != (RechercherNomPrenom.SelectedItem as Patient).NoSS.ToString() ||
-            AssureNoSSCode.Text != (RechercherNomPrenom.SelectedItem as Patient).NoSSCode.ToString() ||
-            AssureCPVilleNom.Text != (RechercherNomPrenom.SelectedItem as Patient).CPVilleNom.ToString() ||
-            AssureCPVilleCode.Text != (RechercherNomPrenom.SelectedItem as Patient).CPVilleCode.ToString() ||
-            AssureCentre.Text != (RechercherNomPrenom.SelectedItem as Patient).Centre.ToString() ||
-            AssureTelDom.Text != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
-            AssureNote.Text != (RechercherNomPrenom.SelectedItem as Patient).Note.ToString());
+            bool assureTextChangedFlag;
+            try
+            {
+                assureTextChangedFlag =
+            RechercherNomPrenom.SelectedItem != null && (AssureNom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
+            AssurePrenom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
+            AssureNoSS.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).NoSS.ToString() ||
+            AssureNoSSCode.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).NoSSCode.ToString() ||
+            AssureCPVilleNom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).CPVilleNom.ToString() ||
+            AssureCPVilleCode.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).CPVilleCode.ToString() ||
+            AssureCentre.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Centre.ToString() ||
+            AssureTelDom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
+            AssureNote.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Note.ToString());
+            }
+            catch (Exception)
+            {
+                assureTextChangedFlag = false;
+            }
+
 
             int ind = 0;
             var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
@@ -399,7 +410,7 @@ namespace Stagerie
                             foreach (var prop in selectedItemProps)
                             {
 
-                                if ((item as TextBox).Text != " " && (item as TextBox).Text != "" && (item as TextBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                if ((item as TextBox).Text.Trim() != "" && (item as TextBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
                                 {
 
                                     prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as TextBox).Text.ToString());
@@ -416,7 +427,7 @@ namespace Stagerie
                             foreach (var prop in selectedItemProps)
                             {
 
-                                if ((item as ComboBox).Text != "" && (item as ComboBox).Text != " " && (item as ComboBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                if ((item as ComboBox).Text.Trim() != "" && (item as ComboBox).Name.Substring(6) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
                                 {
 
                                     prop.SetValue(RechercherNomPrenom.SelectedItem as Patient, (item as ComboBox).Text.ToString());
@@ -441,20 +452,40 @@ namespace Stagerie
 
         private async void PatientTab_LostFocus(object sender, RoutedEventArgs e)
         {
-
-            bool patientTextChangedFlag =
-            RechercherNomPrenom.SelectedItem != null && (PatientNom.Text != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
-            PatientPrenom.Text != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
-            PatientLienNeDate.Text != (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString() ||
-            PatientMail.Text != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
-            PatientCodeRemb.Text != (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString() ||
-            PatientMutuNumber.Text != (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString() ||
+            bool patientTextChangedFlag;
+            bool patientTextNotNull;
+            try
+            {
+                patientTextNotNull =
+                    PatientNom.Text.Trim() != "" &&
+                    PatientPrenom.Text.Trim() != "" &&
+                    PatientLienNeDate.Text.Trim() != "" &&
+                    PatientMail.Text.Trim() != "" &&
+                    PatientCodeRemb.Text.Trim() != "" &&
+                    PatientMutuNumber.Text.Trim() != "" &&
+                    PatientNoAdhMutu.Text.Trim() != "" &&
+                    PatientDroitSince.Text.Trim() != "" &&
+                    PatientDroitTo.Text.Trim() != "";
+                patientTextChangedFlag = RechercherNomPrenom.SelectedItem != null &&
+           (PatientNom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
+            PatientPrenom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
+            PatientLienNeDate.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString() ||
+            PatientMail.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
+            PatientCodeRemb.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString() ||
+            PatientMutuNumber.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString() ||
             PatientMutu.IsChecked != (RechercherNomPrenom.SelectedItem as Patient).Mutu ||
-            PatientNoAdhMutu.Text != (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString() ||
-            PatientDroitSince.Text != (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString() ||
-            PatientDroitTo.Text != (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString());
+            PatientNoAdhMutu.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString() ||
+            PatientDroitSince.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString() ||
+            PatientDroitTo.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString());
+            }
+            catch (Exception)
+            {
+                patientTextNotNull = false;
+                patientTextChangedFlag = false;
+            }
 
-            if (patientTextChangedFlag)
+
+            if (patientTextChangedFlag&&patientTextNotNull)
             {
                 var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
                 ContentDialogResult result = await saveFac.ShowAsync();
@@ -473,7 +504,7 @@ namespace Stagerie
                             foreach (var prop in selectedItemProps)
                             {
 
-                                if ((item as TextBox).Text != " " && (item as TextBox).Text != "" && (item as TextBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                if ((item as TextBox).Text.Trim() != "" && (item as TextBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as TextBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
                                 {
                                     if (prop.Name == "LienNeDate" || prop.Name == "DroitSince" || prop.Name == "DroitTo" || prop.Name == "ModifiedAt")
                                     {
@@ -495,7 +526,7 @@ namespace Stagerie
                             foreach (var prop in selectedItemProps)
                             {
 
-                                if ((item as ComboBox).Text != "" && (item as ComboBox).Text != " " && (item as ComboBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
+                                if ((item as ComboBox).Text.Trim() != "" && (item as ComboBox).Name.Substring(7) == selectedItemProps[ind].Name && (item as ComboBox).Text != (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperty(selectedItemProps[ind].Name.ToString()).ToString())
                                 {
                                     if (prop.Name == "LienNeDate" || prop.Name == "DroitSince" || prop.Name == "DroitTo" || prop.Name == "ModifiedAt")
                                     {
