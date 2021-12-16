@@ -124,7 +124,7 @@ namespace Stagerie
             var border = new Border() { BorderBrush = ProductGrid.BorderBrush, BorderThickness = ProductGrid.BorderThickness };
             Grid grid = new Grid() { BorderBrush = border.BorderBrush, BorderThickness = border.BorderThickness };
             grid.Children.Add(new ComboBox() { Name = "ProductCombo", MinWidth = 378, ItemsSource = list, IsEditable = true });
-            ProductGrid.RowDefinitions.Add(new RowDefinition() { Height = ProductGrid.RowDefinitions.First().Height });
+            //ProductGrid.RowDefinitions.Add(new RowDefinition() { Height = ProductGrid.RowDefinitions.First().Height });
             Grid.SetColumn(grid, 1);
             Grid.SetRow(grid, 1);
             DoNewProductLine(ProductGrid);
@@ -158,6 +158,26 @@ namespace Stagerie
             if (RechercherTab.Visibility == Visibility.Visible)
             {
                 //RechercherTab.Visibility = Visibility.Collapsed;
+                ProductGrid.Children.Clear();
+                ProductGrid.RowDefinitions.Clear();
+                ProductGridCurrentLinesAmount = 1;
+                VisibleRowsAmount = 1;
+
+                ProductGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(31.0, GridUnitType.Pixel) });
+                int column = 0;
+                string[] headerStrings = new string[] { "№", "ProductName", "Liste", "Stock", "Cmd", "CodeActe", "TVA", "Base", "PrixTTC", "Remise", "Qte", "Montant" };
+                var border = new Border() { BorderBrush = ProductGrid.BorderBrush, BorderThickness = ProductGrid.BorderThickness };
+                foreach (var str in headerStrings)
+                {
+                    Grid textBlockGrid = new Grid() { BorderBrush = border.BorderBrush, BorderThickness = border.BorderThickness };
+                    TextBlock textBlock = new TextBlock() { Text = str, TextAlignment = TextAlignment.Center };
+                    textBlockGrid.Children.Add(textBlock);
+                    ProductGrid.Children.Add(textBlockGrid);
+                    Grid.SetColumn(textBlockGrid, column);
+                    Grid.SetRow(textBlockGrid, 0);
+                    column++;
+                }
+                DoNewProductLine(ProductGrid);
             }
             else
             {
@@ -207,6 +227,9 @@ namespace Stagerie
                 PrescripteurDateOrig.SelectedItem = "";
                 PrescripteurDateOrigOrd.SelectedItem = "";
                 PrescripteurDateFac.SelectedItem = "";
+
+
+
 
                 InputLockChanger();
             }
@@ -304,13 +327,6 @@ namespace Stagerie
                         PatientDroitSince.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString();
                         PatientDroitTo.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString();
 
-                        //la béquille
-                        //AssureCPVilleNom.Focus(FocusState.Pointer);
-                        //AssureCPVilleCode.Focus(FocusState.Pointer);
-                        //AssureCentre.Focus(FocusState.Pointer);
-                        //PatientLienNe.Focus(FocusState.Pointer);
-                        //PatientCodeRemb.Focus(FocusState.Pointer);
-                        //PatientMutuNumber.Focus(FocusState.Pointer);
                         AssureNom.Focus(FocusState.Pointer);
                     }
                     else
@@ -398,7 +414,15 @@ namespace Stagerie
             if (assureTextChangedFlag)
             {
                 var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result = await saveFac.ShowAsync();
+                ContentDialogResult result;
+                try
+                {
+                    result = await saveFac.ShowAsync();
+                }
+                catch (Exception)
+                {
+                    result = ContentDialogResult.Secondary;
+                }
 
                 if (result == ContentDialogResult.Primary)
                 {
@@ -485,10 +509,19 @@ namespace Stagerie
             }
 
 
-            if (patientTextChangedFlag&&patientTextNotNull)
+            if (patientTextChangedFlag && patientTextNotNull)
             {
                 var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result = await saveFac.ShowAsync();
+                ContentDialogResult result;
+                try
+                {
+                    result = await saveFac.ShowAsync();
+                }
+                catch (Exception)
+                {
+                    result = ContentDialogResult.Secondary;
+                }
+
 
                 if (result == ContentDialogResult.Primary)
                 {
@@ -566,7 +599,7 @@ namespace Stagerie
         //ProductGrid handlers
         public void DoNewProductLine(Grid targetGrid)
         {
-            targetGrid.RowDefinitions.Add(new RowDefinition() { Height = ProductGrid.RowDefinitions.First().Height });
+            targetGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(31.0, GridUnitType.Pixel) });
 
             for (int i = 0; i < 2; i++)
             {
@@ -632,7 +665,7 @@ namespace Stagerie
                                 ProductGrid.Children.ElementAt(index * 12 + 1).Visibility = Visibility.Collapsed;
                                 DeleteLine(ProductGrid, index);
                                 VisibleRowsAmount--;
-                                for (int i = 1; i < ProductGrid.RowDefinitions.Count - 1; i++)
+                                for (int i = 1; i < ProductGrid.RowDefinitions.Count; i++)
                                 {
                                     if (ProductGrid.RowDefinitions.ElementAt(i).MaxHeight != 0)
                                     {
