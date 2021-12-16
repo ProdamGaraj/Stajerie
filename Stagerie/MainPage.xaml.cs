@@ -157,12 +157,7 @@ namespace Stagerie
         {
             if (RechercherTab.Visibility == Visibility.Visible)
             {
-                ProductGrid.Children.Clear();
-                ProductGrid.RowDefinitions.Clear();
-                ProductGridCurrentLinesAmount = 1;
-                VisibleRowsAmount = 1;
-                ProductGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(31.0, GridUnitType.Pixel) });
-                DoNewProductLine(ProductGrid);
+                //RechercherTab.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -213,12 +208,6 @@ namespace Stagerie
                 PrescripteurDateOrigOrd.SelectedItem = "";
                 PrescripteurDateFac.SelectedItem = "";
 
-                ProductGrid.Children.Clear();
-                ProductGrid.RowDefinitions.Clear();
-                ProductGridCurrentLinesAmount = 1;
-                VisibleRowsAmount = 1;
-                ProductGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(31.0, GridUnitType.Pixel) });
-                DoNewProductLine(ProductGrid);
                 InputLockChanger();
             }
         }
@@ -477,18 +466,17 @@ namespace Stagerie
                     PatientNoAdhMutu.Text.Trim() != "" &&
                     PatientDroitSince.Text.Trim() != "" &&
                     PatientDroitTo.Text.Trim() != "";
-
                 patientTextChangedFlag = RechercherNomPrenom.SelectedItem != null &&
-                    (PatientNom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
-                    PatientPrenom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
-                    PatientLienNeDate.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString() ||
-                    PatientMail.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
-                    PatientCodeRemb.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString() ||
-                    PatientMutuNumber.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString() ||
-                    PatientMutu.IsChecked != (RechercherNomPrenom.SelectedItem as Patient).Mutu ||
-                    PatientNoAdhMutu.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString() ||
-                    PatientDroitSince.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString() ||
-                    PatientDroitTo.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString());
+           (PatientNom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Nom.ToString() ||
+            PatientPrenom.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Prenom.ToString() ||
+            PatientLienNeDate.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).LienNeDate.ToShortDateString() ||
+            PatientMail.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).Mail.ToString() ||
+            PatientCodeRemb.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).CodeRemb.ToString() ||
+            PatientMutuNumber.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).MutuNumber.ToString() ||
+            PatientMutu.IsChecked != (RechercherNomPrenom.SelectedItem as Patient).Mutu ||
+            PatientNoAdhMutu.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString() ||
+            PatientDroitSince.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString() ||
+            PatientDroitTo.Text.Trim() != (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString());
             }
             catch (Exception)
             {
@@ -497,7 +485,7 @@ namespace Stagerie
             }
 
 
-            if (patientTextChangedFlag && patientTextNotNull)
+            if (patientTextChangedFlag&&patientTextNotNull)
             {
                 var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
                 ContentDialogResult result = await saveFac.ShowAsync();
