@@ -186,7 +186,7 @@
         </Grid>
 
         <Grid Margin="0,585,0,0">
-            <muxc:TabView AddTabButtonClick="TabView_AddTabButtonClick"
+            <muxc:TabView 
                TabCloseRequested="TabView_TabCloseRequested" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <muxc:TabView.RenderTransform>
                     <CompositeTransform Rotation="0"/>

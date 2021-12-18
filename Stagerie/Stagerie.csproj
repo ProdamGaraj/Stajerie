@@ -125,9 +125,6 @@
     <Compile Include="PatientCollection.cs" />
     <Compile Include="Prescripteur.cs" />
     <Compile Include="PrescripteurCollection.cs" />
-    <Compile Include="ProductGridView.xaml.cs">
-      <DependentUpon>ProductGridView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FacturationTabViewItem.xaml.cs">
       <DependentUpon>FacturationTabViewItem.xaml</DependentUpon>
     </Compile>
@@ -158,10 +155,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ProductGridView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FacturationTabViewItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
