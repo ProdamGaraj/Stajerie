@@ -21,7 +21,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <muxc:TabView AddTabButtonClick="TabView_AddTabButtonClick"
+        <muxc:TabView x:Name="FactureTabView" AddTabButtonClick="TabView_AddTabButtonClick"
                TabCloseRequested="TabView_TabCloseRequested" Margin="12,122,-12,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <muxc:TabView.RenderTransform>
                 <CompositeTransform Rotation="-0.295"/>
@@ -136,7 +136,7 @@
         <Grid x:Name="Head" HorizontalAlignment="Center" Height="119" VerticalAlignment="Top">
             <Rectangle HorizontalAlignment="Center" Height="47" Stroke="Black" VerticalAlignment="Top" Width="1920" Fill="#FF652BB9"/>
             <Rectangle HorizontalAlignment="Center" Height="73" Stroke="Gray" VerticalAlignment="Top" Width="1920" Margin="0,46,0,0" Fill="#FFAC8ED8"/>
-            <ComboBox  IsEditable="true"  Margin="44,52,0,0" Width="120"/>
+            <ComboBox x:Name="operatorCombo"  IsEditable="true"  Margin="44,52,0,0" Width="120"/>
             <Button x:Name="Headphone" Content="OK" Margin="1793,8,0,0" Background="White" Height="32" VerticalAlignment="Top" Width="34">
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
@@ -183,9 +183,14 @@
                 </Button.Template>
             </Button>
             <Button Tapped="OnAnnulerButtonClick" Content="Annuler" Margin="1810,68,0,0" VerticalAlignment="Top" CanDrag="True" AutomationProperties.Name="AnnulerButton" ManipulationMode="System"/>
+            <Button Content="F5" Margin="518,68,0,0" VerticalAlignment="Top"/>
+            <Button Content="f6" Margin="627,68,0,0" VerticalAlignment="Top"/>
+            <Button Content="f7" Margin="733,68,0,0" VerticalAlignment="Top"/>
+            <Button Content="f8" Margin="837,68,0,0" VerticalAlignment="Top"/>
+            <Button Content="f9" Margin="0,67,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         </Grid>
 
-        <Grid Margin="0,585,0,0">
+        <Grid Margin="0,585,0,69">
             <muxc:TabView 
                TabCloseRequested="TabView_TabCloseRequested" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <muxc:TabView.RenderTransform>
@@ -253,7 +258,11 @@
                 </muxc:TabViewItem>
             </muxc:TabView>
         </Grid>
-        <Grid x:Name="Tail" Margin="0,1010,0,0" Width="1920" Background="#FF6531B0"/>
+        <Grid x:Name="Tail" Margin="0,936,0,0" Width="1920" Background="#FF6531B0">
+            <TextBlock HorizontalAlignment="Left" Margin="27,0,0,0" Text="A payer: 0,00eu" TextWrapping="Wrap" VerticalAlignment="Center"  Height="65" Width="197" Foreground="White" FontSize="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="875,0,0,0" Text="CV-TP: 0-0-0-0-0=0,00" TextWrapping="Wrap" VerticalAlignment="Center"  Height="64" Width="346" Foreground="White" FontSize="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="1642,0,0,0" Text="Total 0 articlr: 0,00eu" TextWrapping="Wrap" VerticalAlignment="Center"  Height="65" Width="264" Foreground="White" FontSize="25"/>
+        </Grid>
         <Button Content="Button" Height="0" Margin="406,1067,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

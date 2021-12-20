@@ -30,7 +30,7 @@ namespace Stagerie
     public sealed partial class MainPage : Page
     {
         const string patientJsonPath = @"C:\data\Patients.json";
-        const string productJsonPath = @"C?\data\Products.json";
+        const string productJsonPath = @"C:\data\Products.json";
 
         public static List<string> ReadJson(string path)
         {
@@ -63,7 +63,31 @@ namespace Stagerie
             }
             return jsonList;
         }
+        class Operator : Entity
+        {
+            public string Name { get; set; }
+            public Operator(string name)
+            {
+                Name = name;
+            }
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
 
+        class OperatorCollection : EntityCollection
+        {
+            public OperatorCollection()
+            { 
+            }
+            void AddItem(string name)
+            {
+                this.Add(new Operator(name));
+            }
+
+
+        }
         public List<String> productNames = new List<String>();
 
         int i = 1;
@@ -76,6 +100,12 @@ namespace Stagerie
         public MainPage()
         {
             this.InitializeComponent();
+            OperatorCollection operators = new OperatorCollection();
+            Operator op1 = new Operator("op1");
+            Operator op2 = new Operator("op2");
+            operators.Add(op1);
+            operators.Add(op2);
+            operatorCombo.ItemsSource = operators;
             Product product = new Product("0909123798213", "analgin", "1", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
             Product product1 = new Product("0909123798213", "meth", "2", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
             Product product2 = new Product("0909123798213", "weed", "8", "stock", "cmd", "codeActe", "tva", "base", "prixTTC", "remise", "qte", "montant");
