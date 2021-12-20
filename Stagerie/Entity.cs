@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Windows.Storage;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Stagerie
         {
             string json = JsonConvert.SerializeObject(this);
             bool firstItem = false;
+
             using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
             {
                 if (fileStream.Length == 0)

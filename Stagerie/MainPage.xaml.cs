@@ -79,7 +79,7 @@ namespace Stagerie
         class OperatorCollection : EntityCollection
         {
             public OperatorCollection()
-            { 
+            {
             }
             void AddItem(string name)
             {
@@ -123,10 +123,13 @@ namespace Stagerie
             products.Add(product6);
             products.Add(product7);
 
-            Patient patient1 = new Patient("Max", "Novopashenniy", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "1", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient2 = new Patient("Vasiliy", "Pupkin", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "22", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient3 = new Patient("Max", "Lebovski", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "333", "Moskva", "88005553535", "lol@ya.ru", true, "MutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
-            Patient patient4 = new Patient("Vasiliy", "Novopashenniy", DateTime.Now.Date, "01892734", "kekw", "wayaaaa", "ulica Pushkina Dom Kolotushkina", "Paris", "4444", "Moskva", "88005553535", "lol@ya.ru", true, "NutuNumber", "", DateTime.Now.Date, DateTime.Now.Date, null);
+
+
+
+            Patient patient1 = new Patient("Kozlov", "Artem", DateTime.Parse("01/10/1985"), "2196574", "22", "5802", "22", "Moskva", "524698", "5", "322122854", "Kozlov@mail.fr", true, "5816", "Note9", DateTime.Parse("11/12/2021"), DateTime.Parse("10/12/2022"), DateTime.MinValue);
+            Patient patient2 = new Patient("Gorodnikov", "Alexandr", DateTime.Parse("5/8/1987"), "3794433", "38", "58", "38", "Novgorod", "787047", "8", "643646993", "Gorodnikov@mail.fr", true, "72", "Good", DateTime.Parse("2/11/2021"), DateTime.Parse("1/11/2022"), DateTime.MinValue);
+            Patient patient3 = new Patient("Dorochenko ", "Petr", DateTime.Parse("17/11/1991"), "6990151", "69", "70", "70", "Kolomna", "258964", "3", "127422486", "Dorochenko@mail.fr", true, "84", "bad", DateTime.Parse("11/02/2021"), DateTime.Parse("10/02/2022"), DateTime.MinValue);
+            Patient patient4 = new Patient("Udin", "Misha", DateTime.Parse("02/03/1986"), "13381587", "132", "134", "134", "Urupinsk", "326598", "3", "254246257", "Udin@mail.fr", true, "148", "child", DateTime.Parse("15/12/2021"), DateTime.Parse("14/12/2022"), DateTime.MinValue);
             Patient patient0 = new Patient("", "", DateTime.Now.Date, "0", "", "", "", "", "0", "", "", "", false, "", "", DateTime.Now.Date, DateTime.Now.Date, null);
             patients.Add(patient0);
             patients.Add(patient1);
@@ -356,6 +359,7 @@ namespace Stagerie
                         PatientNoAdhMutu.Text = (RechercherNomPrenom.SelectedItem as Patient).NoAdhMutu.ToString();
                         PatientDroitSince.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitSince.ToShortDateString();
                         PatientDroitTo.Text = (RechercherNomPrenom.SelectedItem as Patient).DroitTo.ToShortDateString();
+                        ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
 
                         AssureNom.Focus(FocusState.Pointer);
                     }
@@ -388,6 +392,7 @@ namespace Stagerie
 
                     PrescripteurDateOrig.Text = DateTime.Now.ToShortDateString();
                     PrescripteurDateFac.Text = DateTime.Now.ToShortDateString();
+
 
                     PrescripteurHopital.Focus(FocusState.Pointer);
                     PrescripteurSpec.Focus(FocusState.Pointer);
@@ -492,10 +497,11 @@ namespace Stagerie
                             }
                         }
                     }
+                    (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
+                    ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
+                    RechercherNomPrenom.ItemsSource = patients;
                 }
             }
-            RechercherNomPrenom.ItemsSource = patients;
-
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
 
@@ -605,6 +611,8 @@ namespace Stagerie
                             }
                         }
                     }
+                    (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
+                    ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
                     RechercherNomPrenom.ItemsSource = patients;
                 }
             }

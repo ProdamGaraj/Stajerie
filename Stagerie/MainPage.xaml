@@ -61,7 +61,7 @@
                         <TextBlock x:Name="AssureVisitDate" HorizontalAlignment="Left" Margin="116,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="01/01/2021"/>
                         <StackPanel/>
                     </Grid>
-                    <Grid x:Name="RechercherTab" GotFocus="RechercherTabGotFocus" LostFocus="RechercherTabLostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="7,0,0,0" Grid.Row="1" AutomationProperties.Name="RechercherTab" Background="#FFC5C4C4" d:IsHidden="True">
+                    <Grid x:Name="RechercherTab" GotFocus="RechercherTabGotFocus" LostFocus="RechercherTabLostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="7,0,0,0" Grid.Row="1" AutomationProperties.Name="RechercherTab" Background="#FFC5C4C4">
                         <Rectangle x:Name="RechercherRect" HorizontalAlignment="Left" Height="418" Stroke="Black" VerticalAlignment="Center" Width="604" RadiusX="10" RadiusY="10" Fill="#FFC9C8C8" AutomationProperties.AccessibilityView="Content" Visibility="Visible" AutomationProperties.Name="CodePostal"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,22,0,0" Text="Rechercher" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="551" Foreground="#FF652BB9" FontSize="25"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,70,0,0" Text="Nom Prenom" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -100,6 +100,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="18,364,0,0" Text="Droits" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock HorizontalAlignment="Left" Margin="19,217,0,0" Text="Code Remb" TextWrapping="Wrap" VerticalAlignment="Top"/>
                         <TextBlock Visibility="Collapsed" x:Name="modificationAlarm" HorizontalAlignment="Left" Margin="462,20,0,0" Text="modification" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Foreground="Red" FontSize="18"/>
+                        <TextBlock x:Name="ModifiedAt" HorizontalAlignment="Left" Margin="10,391,0,0" Text="Modified At" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     </Grid>
                     <Grid x:Name="PrescripteurTab" GotFocus="PrescripteurTab_GotFocus" LostFocus="PrescripteurTab_LostFocus" Grid.Column="1" HorizontalAlignment="Left" Height="418" Margin="917,0,0,0" VerticalAlignment="Center" Width="610" Grid.Row="1">
                         <Grid.ColumnDefinitions>
