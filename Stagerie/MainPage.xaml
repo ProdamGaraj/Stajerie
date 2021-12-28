@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="374*"/>
                         <ColumnDefinition Width="1541*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid x:Name="AssureTab" GotFocus="AssureTab_GotFocus" LostFocus="AssureTab_LostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="7,0,0,0" Grid.Row="1">
+                    <Grid x:Name="AssureTab" GotFocus="AssureTab_GotFocus" LostFocus="AssureTab_LostFocus" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Margin="-11,0,0,0">
                         <Rectangle x:Name="AssureRect" HorizontalAlignment="Center" Height="418" Stroke="Black" VerticalAlignment="Center" Width="604" RadiusX="10" RadiusY="10" Fill="#FFC9C8C8"/>
                         <TextBlock HorizontalAlignment="Left" Margin="20,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="551" Foreground="#FF652BB9" FontSize="25"><Run Text="Assure"/><LineBreak/><Run/></TextBlock>
                         <TextBlock HorizontalAlignment="Left" Margin="20,69,0,0" Text="Nom" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -183,7 +183,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Tapped="OnAnnulerButtonClick" Content="Annuler" Margin="1810,68,0,0" VerticalAlignment="Top" CanDrag="True" AutomationProperties.Name="AnnulerButton" ManipulationMode="System"/>
+            <Button Tapped="OnAnnulerButtonClick" Content="Annuler" Margin="411,67,0,0" VerticalAlignment="Top" CanDrag="True" AutomationProperties.Name="AnnulerButton" ManipulationMode="System"/>
             <Button Content="F5" Margin="518,68,0,0" VerticalAlignment="Top"/>
             <Button Content="f6" Margin="627,68,0,0" VerticalAlignment="Top"/>
             <Button Content="f7" Margin="733,68,0,0" VerticalAlignment="Top"/>

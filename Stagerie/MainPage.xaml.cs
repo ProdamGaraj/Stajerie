@@ -448,19 +448,19 @@ namespace Stagerie
             var tempTb = new TextBox();
             if (assureTextChangedFlag)
             {
-                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result;
-                try
-                {
-                    result = await saveFac.ShowAsync();
-                }
-                catch (Exception)
-                {
-                    result = ContentDialogResult.Secondary;
-                }
-
-                if (result == ContentDialogResult.Primary)
-                {
+                //var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+                //ContentDialogResult result;
+                //try
+                //{
+                //    result = await saveFac.ShowAsync();
+                //}
+                //catch (Exception)
+                //{
+                //    result = ContentDialogResult.Secondary;
+                //}
+                
+                //if (result == ContentDialogResult.Primary)
+                //{
                     foreach (var item in (sender as Grid).Children)
                     {
                         if (item.GetType().Equals(tempTb.GetType()))//ALL TEXTBOXES
@@ -500,7 +500,7 @@ namespace Stagerie
                     (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
                     ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
                     RechercherNomPrenom.ItemsSource = patients;
-                }
+                //}
             }
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
@@ -547,20 +547,20 @@ namespace Stagerie
 
             if (patientTextChangedFlag && patientTextNotNull)
             {
-                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result;
-                try
-                {
-                    result = await saveFac.ShowAsync();
-                }
-                catch (Exception)
-                {
-                    result = ContentDialogResult.Secondary;
-                }
-
-
-                if (result == ContentDialogResult.Primary)
-                {
+                //var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+                //ContentDialogResult result;
+                //try
+                //{
+                //    result = await saveFac.ShowAsync();
+                //}
+                //catch (Exception)
+                //{
+                //    result = ContentDialogResult.Secondary;
+                //}
+                //
+                //
+                //if (result == ContentDialogResult.Primary)
+                //{
                     int ind = 0;
                     var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
                     var tempCb = new ComboBox();
@@ -614,7 +614,7 @@ namespace Stagerie
                     (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
                     ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
                     RechercherNomPrenom.ItemsSource = patients;
-                }
+                //}
             }
             PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
