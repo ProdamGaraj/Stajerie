@@ -420,7 +420,7 @@ namespace Stagerie
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
         }
 
-        private async void AssureTab_LostFocus(object sender, RoutedEventArgs e)
+        private void AssureTab_LostFocus(object sender, RoutedEventArgs e)
         {
             bool assureTextChangedFlag;
             try
@@ -446,21 +446,21 @@ namespace Stagerie
             var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
             var tempCb = new ComboBox();
             var tempTb = new TextBox();
-            if (assureTextChangedFlag)
-            {
-                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result;
-                try
-                {
-                    result = await saveFac.ShowAsync();
-                }
-                catch (Exception)
-                {
-                    result = ContentDialogResult.Secondary;
-                }
+            //if (assureTextChangedFlag)
+            //{
+            //    var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+            //    ContentDialogResult result;
+            //    try
+            //    {
+            //        result = await saveFac.ShowAsync();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        result = ContentDialogResult.Secondary;
+            //    }
 
-                if (result == ContentDialogResult.Primary)
-                {
+            //    if (result == ContentDialogResult.Primary)
+            //    {
                     foreach (var item in (sender as Grid).Children)
                     {
                         if (item.GetType().Equals(tempTb.GetType()))//ALL TEXTBOXES
@@ -500,8 +500,8 @@ namespace Stagerie
                     (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
                     ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
                     RechercherNomPrenom.ItemsSource = patients;
-                }
-            }
+                //}
+            //}
             AssureRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
 
@@ -510,7 +510,7 @@ namespace Stagerie
             PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 161, 136, 198));
         }
 
-        private async void PatientTab_LostFocus(object sender, RoutedEventArgs e)
+        private void PatientTab_LostFocus(object sender, RoutedEventArgs e)
         {
             bool patientTextChangedFlag;
             bool patientTextNotNull;
@@ -547,20 +547,20 @@ namespace Stagerie
 
             if (patientTextChangedFlag && patientTextNotNull)
             {
-                var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
-                ContentDialogResult result;
-                try
-                {
-                    result = await saveFac.ShowAsync();
-                }
-                catch (Exception)
-                {
-                    result = ContentDialogResult.Secondary;
-                }
-
-
-                if (result == ContentDialogResult.Primary)
-                {
+                //var saveFac = new ContentDialog() { Title = "Do you want to save changes?", PrimaryButtonText = "YES", SecondaryButtonText = "NO" };
+                //ContentDialogResult result;
+                //try
+                //{
+                //    result = await saveFac.ShowAsync();
+                //}
+                //catch (Exception)
+                //{
+                //    result = ContentDialogResult.Secondary;
+                //}
+                //
+                //
+                //if (result == ContentDialogResult.Primary)
+                //{
                     int ind = 0;
                     var selectedItemProps = (RechercherNomPrenom.SelectedItem as Patient).GetType().GetProperties();
                     var tempCb = new ComboBox();
@@ -614,7 +614,7 @@ namespace Stagerie
                     (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt = DateTime.Now;
                     ModifiedAt.Text = (RechercherNomPrenom.SelectedItem as Patient).ModifiedAt.ToString();
                     RechercherNomPrenom.ItemsSource = patients;
-                }
+                //}
             }
             PatientRect.Fill = new SolidColorBrush(Color.FromArgb(255, 197, 196, 196));
         }
